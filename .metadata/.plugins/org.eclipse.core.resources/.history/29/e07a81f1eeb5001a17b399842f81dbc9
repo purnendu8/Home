@@ -1,0 +1,47 @@
+package scripts;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import pageObjects.NaukriLoginPage;
+import pageObjects.NavigateToHome;
+import utility.Base;
+
+public class VerifyProfileUpdate extends Base{
+	WebDriver driver;
+	@Test
+	public void testUpdateCV() throws IOException, InterruptedException
+	{
+		driver=initializeDriver();
+		NaukriLoginPage nlp=new NaukriLoginPage(driver);
+		nlp.loginLink();
+		Thread.sleep(2000);
+		nlp.setUserName("purnendukumar8@hotmail.com");
+		nlp.setPassword("purnendu8");
+		nlp.submit();
+		
+		NavigateToHome nh=new NavigateToHome(driver);
+		Thread.sleep(2000);
+		Actions action=new Actions(driver);
+		Thread.sleep(3000);
+		action.moveToElement(nh.myNaukriLink()).perform();
+		nh.editProfile();
+		Thread.sleep(3000);
+		//nh.updateResume();
+		System.out.println(driver.findElement(By.xpath("//input[@vdata-tryxpath-element='0']")).getText());
+		//driver.findElement(By.xpath("//div[contains(text(),'Supported Formats')]")).getText();
+		driver.findElement(By.xpath("//input[@data-tryxpath-element='0']")).click();
+		Thread.sleep(2000);
+		
+		//driver.findElement(By.cssSelector("input.fileUpload.waves-effect.waves-light.btn-large")).click();
+		
+				
+		
+	}
+	
+
+}

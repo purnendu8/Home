@@ -1,0 +1,61 @@
+package scripts;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+import pageObjects.NaukriLoginPage;
+import pageObjects.NavigateToHome;
+import utility.Base;
+
+public class VerifyProfileUpdate extends Base{
+	WebDriver driver;
+	@Test
+	public void testUpdateCV() throws IOException, InterruptedException
+	{
+		driver=initializeDriver();
+		
+		NavigateToHome nh=new NavigateToHome(driver);
+		nh.loginLink();
+		Thread.sleep(3000);
+		nh.setUserName("purnendukumar8@hotmail.com");
+		Thread.sleep(1000);
+		nh.setPassword("purnendu8");
+		nh.submit();
+		Thread.sleep(1000);
+		Actions action=new Actions(driver);
+		Thread.sleep(3000);
+		action.moveToElement(nh.myNaukriLink()).perform();
+		nh.editProfile();
+		Thread.sleep(3000);
+		File file=new File("D:\\Eclipse_WS\\HomeProject - Supporting files\\Purnendu_BE_7yrs_AutomationTesting .doc");
+		String path=file.getAbsolutePath();
+		nh.updateResume(path);
+		//System.out.println(driver.findElement(By.cssSelector("input#attachCV")).getAttribute("class"));
+		//driver.findElement(By.cssSelector("input#attachCV")).sendKeys("D:\\Eclipse_WS\\HomeProject - Supporting files\\Purnendu_BE_7yrs_AutomationTesting .doc");
+		//driver.findElement(By.cssSelector("input#attachCV.fileUpload.waves-effect.waves-light.btn-large")).click();
+		
+		Thread.sleep(5000);
+		System.out.println(driver.findElement(By.cssSelector("span.updateOn")).getText());
+		String uplodadedOn=driver.findElement(By.cssSelector("span.updateOn")).getText();
+		String[] upload=uplodadedOn.split(" ");
+		System.out.println(upload[0]);
+		System.out.println(upload[3]);
+		Date date=new Date();
+		
+		
+		//driver.findElement(By.cssSelector("input.fileUpload.waves-effect.waves-light.btn-large")).click();
+		
+				
+		
+	}
+	
+
+}

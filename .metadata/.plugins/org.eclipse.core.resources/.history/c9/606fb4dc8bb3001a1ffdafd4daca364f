@@ -1,0 +1,32 @@
+package scripts;
+
+import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import pageObjects.TimesJobspage;
+import utility.Base;
+
+public class VerifyTimesJobs extends Base{
+	WebDriver driver;
+//	Actions action=new Actions(driver);
+	
+	@Test
+	public void testTimesJobs() throws IOException
+	{
+		driver=initializeDriver();
+		TimesJobspage tj=new TimesJobspage(driver);
+		tj.LoginCredential();
+		tj.setUsername("purnendukumar8@gmail.com");
+		tj.setPassword("8706");
+		tj.LoginSubmit();
+		
+		Actions action=new Actions(driver);
+		action.moveToElement(tj.MyProfileLink()).perform();
+		tj.editProfile();
+		tj.updateResume();
+	}
+
+}

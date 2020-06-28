@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="49384" started-at="2020-06-27T04:25:40Z" finished-at="2020-06-27T04:26:29Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="49384" started-at="2020-06-27T04:25:40Z" finished-at="2020-06-27T04:26:29Z">
+      <class name="scripts.VerifyTimesJobs">
+        <test-method status="FAIL" signature="testTimesJobs()[pri:0, instance:scripts.VerifyTimesJobs@1e88b3c]" name="testTimesJobs" duration-ms="42176" started-at="2020-06-27T09:55:40Z" finished-at="2020-06-27T09:56:22Z">
+          <exception class="junit.framework.AssertionFailedError">
+            <full-stacktrace>
+              <![CDATA[junit.framework.AssertionFailedErrorat junit.framework.Assert.fail(Assert.java:47)at junit.framework.Assert.assertTrue(Assert.java:20)at junit.framework.Assert.assertTrue(Assert.java:27)at pageObjects.TimesJobspage.updatedDateVerification(TimesJobspage.java:89)at scripts.VerifyTimesJobs.testTimesJobs(VerifyTimesJobs.java:49)at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)at java.lang.reflect.Method.invoke(Unknown Source)at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)at org.testng.internal.Invoker.invokeMethod(Invoker.java:571)at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:707)at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:979)at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)at org.testng.TestRunner.privateRun(TestRunner.java:648)at org.testng.TestRunner.run(TestRunner.java:505)at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)at org.testng.SuiteRunner.run(SuiteRunner.java:364)at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)at org.testng.TestNG.runSuites(TestNG.java:1028)at org.testng.TestNG.run(TestNG.java:996)at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]]>
+            </full-stacktrace>
+          </exception> <!-- junit.framework.AssertionFailedError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTimesJobs -->
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:scripts.VerifyTimesJobs@1e88b3c]" name="closeDriver" is-config="true" duration-ms="7154" started-at="2020-06-27T09:56:22Z" finished-at="2020-06-27T09:56:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeDriver -->
+      </class> <!-- scripts.VerifyTimesJobs -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

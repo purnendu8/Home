@@ -1,0 +1,20 @@
+package scripts;
+
+import java.time.LocalDate;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+import pageObjects.TimesJobspage;
+
+public class Rough {
+	WebDriver driver;
+	@Test
+	public void rough()
+	{ 
+		TimesJobspage tj=new TimesJobspage(driver);
+		LocalDate l=LocalDate.now();
+		System.out.println(l);
+	}
+
+}

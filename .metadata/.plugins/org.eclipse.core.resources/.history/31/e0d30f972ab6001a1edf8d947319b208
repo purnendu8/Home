@@ -1,0 +1,49 @@
+package scripts;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import pageObjects.TimesJobspage;
+import utility.Base;
+
+public class VerifyTimesJobs extends Base{
+	WebDriver driver;
+//	Actions action=new Actions(driver);
+	
+	@Test
+	public void testTimesJobs() throws IOException, InterruptedException
+	{
+		driver=initializeDriver();
+		TimesJobspage tj=new TimesJobspage(driver);
+		tj.LoginCredential();
+		tj.setUsername("purnendukumar8@gmail.com");
+		tj.setPassword("8706");
+		tj.LoginSubmit();
+		
+		Actions action=new Actions(driver);
+		Thread.sleep(3000);
+		action.moveToElement(tj.MyProfileLink()).perform();
+		Thread.sleep(1000);
+		tj.editProfile();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].scrollIntoView();",tj.updateResume());
+		Thread.sleep(5000);
+		tj.updateResume().click();
+		Thread.sleep(2000);
+		//tj.uploadFile();
+		System.out.println(driver.findElement(By.cssSelector("input#wordResumeFile")).getAttribute("id"));
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//input[@id='wordResumeFile']")).click();
+		Thread.sleep(2000);
+		Runtime.getRuntime().exec("D:\\Eclipse_WS\\HomeProject - Supporting files\\AutoIT\\applyCV.exe");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("#submitbutton")).click();
+		Thread.sleep(2000);
+	}
+
+}
