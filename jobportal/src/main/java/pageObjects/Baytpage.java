@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class Baytpage {
 	@FindBy(linkText="Log In")
 	private WebElement loginLink;
-	
+
 	public Baytpage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
@@ -18,6 +18,8 @@ public class Baytpage {
 	{
 		loginLink.click();
 	}
+	
+
 	
 
 }
