@@ -10,7 +10,7 @@ public class Baytpage {
 	private WebElement loginLink;
 	@FindBy(css="")
 	private WebElement username;
-	
+
 	public Baytpage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
@@ -25,5 +25,7 @@ public class Baytpage {
 	{
 	  username.sendKeys(un);
 	}
+
+	
 
 }
