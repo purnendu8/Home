@@ -3,12 +3,12 @@
 <suite thread-count="-1" guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="scripts.VerifyTimesJobs">
+      <class name="scripts.VerifyMonster">
         <methods>
           <include name="closeDriver"/>
-          <include name="testTimesJobs"/>
+          <include name="testMonsterIndia"/>
         </methods>
-      </class> <!-- scripts.VerifyTimesJobs -->
+      </class> <!-- scripts.VerifyMonster -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

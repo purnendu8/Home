@@ -1,0 +1,58 @@
+package scripts;
+
+import java.io.IOException;
+import java.util.Date;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import junit.framework.Assert;
+import pageObjects.MonsterIndiapage;
+import utility.Base;
+
+public class VerifyMonster extends Base {
+	WebDriver driver;
+	Actions action;
+	@Test
+	public void testMonsterIndia() throws IOException, InterruptedException
+	{
+		driver=initializeDriver();
+		MonsterIndiapage mi=new MonsterIndiapage(driver);
+		mi.LoginLink();
+		mi.setUserName("purnendukumar8@hotmail.com");
+		Thread.sleep(2000);
+		mi.setPassword("purnendu8");
+		Thread.sleep(2000);
+		mi.LoginSubmit();
+		
+		action=new Actions(driver);
+		action.moveToElement(mi.profileHover()).perform();
+		Thread.sleep(3000);
+		mi.MyProfileLink();
+		//driver.findElement(By.xpath("//a[text()='My Profile']")).click();
+		Thread.sleep(3000);
+		mi.uploadIcon();
+		//driver.findElement(By.cssSelector("i.mqfi-upload")).click();
+		Thread.sleep(3000);
+		mi.resumeBrowse("D:\\Eclipse_WS\\HomeProject - Supporting files\\Purnendu_BE_7yrs_AutomationTesting .doc");
+		//driver.findElement(By.cssSelector("input#resume")).sendKeys("D:\\Eclipse_WS\\HomeProject - Supporting files\\Purnendu_BE_7yrs_AutomationTesting .doc");
+		Thread.sleep(3000);
+		mi.Save();
+		//driver.findElement(By.xpath("//div[@id='uploadResumeModel']//button")).click();
+		Thread.sleep(3000);
+		//mi.verifyLastUpdate();
+		WebElement lastupdate=driver.findElement(By.cssSelector(".last-update.mt15"));
+		Date d=new Date();
+		String today=d.toString().replaceAll(":", " ").split(" ")[2];
+		System.out.println(today);
+		String[] Date=lastupdate.getText().replaceAll(":", " ").split(" ");
+		String updateDate=Date[3];
+		System.out.println(updateDate);
+		Assert.assertTrue(updateDate.equalsIgnoreCase(today));
+		Thread.sleep(1000);
+	}
+
+}

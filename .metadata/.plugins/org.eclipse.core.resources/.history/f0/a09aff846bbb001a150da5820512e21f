@@ -1,0 +1,32 @@
+package scripts;
+
+import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+import pageObjects.SendEmailToHR;
+import utility.Base;
+
+public class verifySendEmailHR extends Base {
+	WebDriver driver;
+	
+	@Test
+	public void testSendHrEmail() throws IOException, InterruptedException
+	{
+		driver=initializeDriver();
+		SendEmailToHR HRemail=new SendEmailToHR(driver);
+		
+		driver.get("https://login.live.com/");
+		HRemail.setUserName("purnendukumar8");
+		HRemail.NextPlusSubmit();
+		HRemail.setPassword("@#PK8706pk3");
+		Thread.sleep(2000);
+		HRemail.NextPlusSubmit();
+		
+		Thread.sleep(3000);
+		
+	}
+	
+
+}

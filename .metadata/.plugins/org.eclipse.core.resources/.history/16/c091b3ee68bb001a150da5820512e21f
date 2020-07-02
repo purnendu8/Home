@@ -1,0 +1,24 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class SendEmailToHR {
+	@FindBy(css="#i0116")
+	private WebElement username;
+	@FindBy(css="#idSIButton9")
+	private WebElement NextPlusSubmit;
+	@FindBy(css="#i0118")
+	private WebElement password;
+	
+	
+	public SendEmailToHR(WebDriver driver)
+	{
+		PageFactory.initElements(driver, this);
+	}
+	
+	
+
+}

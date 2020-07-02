@@ -25,9 +25,9 @@ public class TimesJobspage {
 	private WebElement editProfile;
 	@FindBy(css="button.waves-effect.waves-light.btn.update-resume")
 	private WebElement updateResumeBTN;
-	@FindBy(css="#wordResumeFile")
+	@FindBy(xpath="//label[text()='Upload Resume']/following-sibling::input")
 	private WebElement uploadFile;
-	@FindBy(css="input#submitbutton")
+	@FindBy(xpath="//input[@id='submitbutton' and @value='Save']")
 	private WebElement save;
 	@FindBy(css="#profile-doc-modified-date")
 	private WebElement updatedON;
@@ -73,7 +73,7 @@ public class TimesJobspage {
 		uploadFile.sendKeys(path);
 	}
 	
-	public void saveBTN()
+	public void save()
 	{
 		save.click();
 	}

@@ -1,0 +1,60 @@
+package scripts;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+import junit.framework.Assert;
+import pageObjects.Naukripage;
+import utility.Base;
+
+public class VerifyNaukri extends Base{
+	WebDriver driver;
+	@Test
+	public void testUpdateCV() throws IOException, InterruptedException
+	{
+		driver=initializeDriver();
+		driver.get("https://www.naukri.com/");
+		Naukripage nh=new Naukripage(driver);
+		nh.loginLink();
+		Thread.sleep(3000);
+		nh.setUserName("purnendukumar8@hotmail.com");
+		Thread.sleep(1000);
+		nh.setPassword("purnendu8");
+		nh.submit();
+		Thread.sleep(1000);
+		Actions action=new Actions(driver);
+		Thread.sleep(3000);
+		action.moveToElement(nh.myNaukriLink()).perform();
+		nh.editProfile();
+		Thread.sleep(3000);
+		File file=new File("D:\\Eclipse_WS\\HomeProject - Supporting files\\Purnendu_BE_7yrs_AutomationTesting .doc");
+		String path=file.getAbsolutePath();
+		nh.updateResume(path);
+		
+		Thread.sleep(5000);
+		
+		String uplodadedOn=driver.findElement(By.cssSelector("span.updateOn")).getText();
+		String uploaded=uplodadedOn.replace(",", " ");
+		
+		String[] upload=uploaded.split(" ");
+		String uploadedDate=upload[3];
+		
+		Date d=new Date();
+		d.toString().replaceAll(":", " ");
+		String[] date=d.toString().split(" ");
+		String today=date[2];
+		
+		Assert.assertEquals(uploadedDate, today);
+		Assert.assertTrue(uploadedDate.equals(today));
+		
+	}
+	
+}

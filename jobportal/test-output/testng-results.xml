@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="49384" started-at="2020-06-27T04:25:40Z" finished-at="2020-06-27T04:26:29Z">
+  <suite name="Suite" duration-ms="166662" started-at="2020-07-02T15:37:28Z" finished-at="2020-07-02T15:40:15Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="49384" started-at="2020-06-27T04:25:40Z" finished-at="2020-06-27T04:26:29Z">
+    <test name="Naukri" duration-ms="51796" started-at="2020-07-02T15:37:28Z" finished-at="2020-07-02T15:38:20Z">
+      <class name="scripts.VerifyNaukri">
+        <test-method status="PASS" signature="testNaukri()[pri:0, instance:scripts.VerifyNaukri@7d9d1a19]" name="testNaukri" duration-ms="48308" started-at="2020-07-02T21:07:28Z" finished-at="2020-07-02T21:08:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNaukri -->
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:scripts.VerifyNaukri@7d9d1a19]" name="closeDriver" is-config="true" duration-ms="3425" started-at="2020-07-02T21:08:16Z" finished-at="2020-07-02T21:08:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeDriver -->
+      </class> <!-- scripts.VerifyNaukri -->
+    </test> <!-- Naukri -->
+    <test name="TimesJobs" duration-ms="62431" started-at="2020-07-02T15:38:21Z" finished-at="2020-07-02T15:39:23Z">
       <class name="scripts.VerifyTimesJobs">
-        <test-method status="FAIL" signature="testTimesJobs()[pri:0, instance:scripts.VerifyTimesJobs@1e88b3c]" name="testTimesJobs" duration-ms="42176" started-at="2020-06-27T09:55:40Z" finished-at="2020-06-27T09:56:22Z">
-          <exception class="junit.framework.AssertionFailedError">
-            <full-stacktrace>
-              <![CDATA[junit.framework.AssertionFailedErrorat junit.framework.Assert.fail(Assert.java:47)at junit.framework.Assert.assertTrue(Assert.java:20)at junit.framework.Assert.assertTrue(Assert.java:27)at pageObjects.TimesJobspage.updatedDateVerification(TimesJobspage.java:89)at scripts.VerifyTimesJobs.testTimesJobs(VerifyTimesJobs.java:49)at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)at java.lang.reflect.Method.invoke(Unknown Source)at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)at org.testng.internal.Invoker.invokeMethod(Invoker.java:571)at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:707)at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:979)at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)at org.testng.TestRunner.privateRun(TestRunner.java:648)at org.testng.TestRunner.run(TestRunner.java:505)at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)at org.testng.SuiteRunner.run(SuiteRunner.java:364)at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)at org.testng.TestNG.runSuites(TestNG.java:1028)at org.testng.TestNG.run(TestNG.java:996)at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]]>
-            </full-stacktrace>
-          </exception> <!-- junit.framework.AssertionFailedError -->
+        <test-method status="PASS" signature="testTimesJobs()[pri:0, instance:scripts.VerifyTimesJobs@5700d6b1]" name="testTimesJobs" duration-ms="55223" started-at="2020-07-02T21:08:21Z" finished-at="2020-07-02T21:09:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testTimesJobs -->
-        <test-method status="PASS" signature="closeDriver()[pri:0, instance:scripts.VerifyTimesJobs@1e88b3c]" name="closeDriver" is-config="true" duration-ms="7154" started-at="2020-06-27T09:56:22Z" finished-at="2020-06-27T09:56:29Z">
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:scripts.VerifyTimesJobs@5700d6b1]" name="closeDriver" is-config="true" duration-ms="7205" started-at="2020-07-02T21:09:16Z" finished-at="2020-07-02T21:09:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeDriver -->
       </class> <!-- scripts.VerifyTimesJobs -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- TimesJobs -->
+    <test name="Monster" duration-ms="51402" started-at="2020-07-02T15:39:23Z" finished-at="2020-07-02T15:40:15Z">
+      <class name="scripts.VerifyMonster">
+        <test-method status="PASS" signature="testMonsterIndia()[pri:0, instance:scripts.VerifyMonster@490ab905]" name="testMonsterIndia" duration-ms="44231" started-at="2020-07-02T21:09:23Z" finished-at="2020-07-02T21:10:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMonsterIndia -->
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:scripts.VerifyMonster@490ab905]" name="closeDriver" is-config="true" duration-ms="7168" started-at="2020-07-02T21:10:08Z" finished-at="2020-07-02T21:10:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeDriver -->
+      </class> <!-- scripts.VerifyMonster -->
+    </test> <!-- Monster -->
+  </suite> <!-- Suite -->
 </testng-results>

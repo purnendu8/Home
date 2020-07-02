@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="-1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test name="Test(failed)">
+  <test name="TimesJobs(failed)">
     <classes>
-      <class name="scripts.VerifyProfileUpdate">
+      <class name="scripts.VerifyTimesJobs">
         <methods>
           <include name="closeDriver"/>
-          <include name="testUpdateCV"/>
+          <include name="testTimesJobs"/>
         </methods>
-      </class> <!-- scripts.VerifyProfileUpdate -->
+      </class> <!-- scripts.VerifyTimesJobs -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- TimesJobs(failed) -->
+  <test name="Monster(failed)">
+    <classes>
+      <class name="scripts.VerifyMonster">
+        <methods>
+          <include name="closeDriver"/>
+          <include name="testMonsterIndia"/>
+        </methods>
+      </class> <!-- scripts.VerifyMonster -->
+    </classes>
+  </test> <!-- Monster(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,41 @@
+package scripts;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+import pageObjects.SendEmailToHR;
+import utility.Base;
+
+public class verifySendEmailHR extends Base {
+	WebDriver driver;
+	
+	@Test
+	public void testSendHrEmail() throws IOException, InterruptedException
+	{
+		driver=initializeDriver();
+		SendEmailToHR HRemail=new SendEmailToHR(driver);
+		
+		driver.get("https://login.live.com/");
+		HRemail.setUserName("purnendukumar8");
+		HRemail.Next();
+		HRemail.setPassword("@#PK8706pk3");
+		Thread.sleep(2000);
+		HRemail.SignIN();
+		
+		Thread.sleep(3000);
+		driver.findElement(By.id("id__3")).click();
+		driver.findElement(By.cssSelector("input.ms-BasePicker-input.pickerInput_cf204fb8")).sendKeys("purnendukumar82@gmail.com");
+		driver.findElement(By.cssSelector("input.ms-TextField-field.field-143")).sendKeys("HR email testing");
+		driver.findElement(By.cssSelector("div[aria-label='Message body']")).sendKeys("Msz Body");
+		driver.findElement(By.id("id__533")).click();
+		driver.findElement(By.cssSelector("div.ms-ContextualMenu-linkContent.linkContent-214")).sendKeys("CV");
+		driver.findElement(By.id("id__556")).click();
+		
+		
+	}
+	
+
+}

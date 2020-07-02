@@ -1,9 +1,13 @@
 package pageObjects;
 
+import java.util.Date;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import junit.framework.Assert;
 
 public class MonsterIndiapage {
 	@FindBy(xpath="//span[text()='Jobseeker Login']")
@@ -14,6 +18,18 @@ public class MonsterIndiapage {
 	private WebElement password;
 	@FindBy(css="#signInbtn")
 	private WebElement loginBTN;
+	@FindBy(id="usrLoggedInUi")
+	private WebElement profile;
+	@FindBy(xpath="//a[text()='My Profile']")
+	private WebElement MyProfile;
+	@FindBy(css="i.mqfi-upload")
+	private WebElement upload;
+	@FindBy(xpath="//div[contains(text(),'file to upload')]/following-sibling::input")
+	private WebElement resumeBrowse;
+	@FindBy(xpath="//div[@id='uploadResumeModel']//button[text()='Save']")
+	private WebElement save;
+	@FindBy(css="div.col-sm-9.col-xs-8.text-right span.semi-bold")
+	private WebElement lastupdate;
 	
 	public MonsterIndiapage(WebDriver driver)
 	{
@@ -28,13 +44,52 @@ public class MonsterIndiapage {
 	{
 		username.sendKeys(un);
 	}
+	
 	public void setPassword(String pw)
 	{
 		password.sendKeys(pw);
 	}
+	
 	public void LoginSubmit()
 	{
 		loginBTN.click();
+	}
+	
+	public WebElement profileHover()
+	{
+		return profile;
+	}
+	
+	public void MyProfileLink()
+	{
+		MyProfile.click();
+	}
+	
+	public void uploadIcon()
+	{
+		upload.click();
+	}
+	
+	public void resumeBrowse(String path)
+	{
+		resumeBrowse.sendKeys(path);
+	}
+	
+	public void Save()
+	{
+		save.click();
+	}
+	public void verifyLastUpdate()
+	{
+		Date d=new Date();
+		String today=d.toString().replaceAll(":", " ").split(" ")[2];
+		if(today.startsWith("0"))
+		{
+			today=today.replace("0", " ").trim();
+		}
+		String updateDate=lastupdate.getText().split(" ")[0];
+
+		Assert.assertTrue(updateDate.equalsIgnoreCase(today));
 	}
 
 }

@@ -3,9 +3,17 @@ package utility;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.NumberToTextConverter;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,12 +34,12 @@ public class Base {
 	public WebDriver initializeDriver() throws IOException, InterruptedException
 	{
 		String browser=getPropertyData().getProperty("browser");
-		String url=getPropertyData().getProperty("url");
+		 String url=getPropertyData().getProperty("url");
 		
 		if(browser.equals("chrome"))
 		{
 			 driver=new ChromeDriver();
-			driver.get(url);
+			//driver.get(url);             // temprary i am taking data from, 
 		}
 		else if(browser.equals("firefox"))
 		{
@@ -44,12 +52,12 @@ public class Base {
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		Thread.sleep(3000);
-		driver.navigate().refresh();
 		
 		return driver;	
 		
 	}
+	
+	
 	
 	public static Properties getPropertyData() throws IOException
 	{
@@ -60,6 +68,9 @@ public class Base {
 		return prop;
 	}
 	
+	
+	
+	
 	@AfterTest
 	public void closeDriver() throws InterruptedException
 	{
@@ -67,5 +78,76 @@ public class Base {
 		driver.close();
 	}
 	
+	
+	// Create XSSFWorkbook object.
+	// get Sheet
+	// Identify Testcase column by scanning the intire row
+	// once column is identifed then entire Testcase column to identify purches testcase.
+	// after you find purches tescase, pull all data of that row, and fed to test.
+	
+ public ArrayList<String> getData(String getValue) throws IOException {
+	 
+	 	ArrayList<String> al=new ArrayList<String>();
+		FileInputStream fis=new FileInputStream("D://Eclipse_WS//ExcelDriven_WS//ExcelDriven//data//Input.xlsx");
+		
+		// Create XSSFWorkbook object.
+		XSSFWorkbook workbook=new XSSFWorkbook(fis); //FileInputStream arguement 
+		int sheets=workbook.getNumberOfSheets();
+		for(int i=0;i<sheets;i++)
+		{
+			if(workbook.getSheetName(i).equalsIgnoreCase("HR_Emails"))
+			{
+				XSSFSheet sheet=workbook.getSheetAt(i); // get Sheet
+				
+				// Identify Testcase column by scanning the entire row
+				Iterator<Row> rows = sheet.iterator(); // sheet is collection of rows
+				Row firstRow = rows.next();
+				Iterator<Cell> cells=firstRow.cellIterator(); // row is collection of cells
+				int k=0;
+				int column=0;
+				while(cells.hasNext())
+				{
+					if(cells.next().getStringCellValue().equalsIgnoreCase("Email_ID"))
+					{
+						column=k;
+					}
+					k++;
+				}
+				System.out.println(column);
+				
+				// once column is identified then entire Testcase column to identify of particular testcase.
+				while(rows.hasNext())
+				{
+					Row row = rows.next();
+					if(row.getCell(column).getStringCellValue().equalsIgnoreCase(getValue))
+					{
+						// after you find purches tescase, pull all data of that row, and fed to test.
+						Iterator<Cell> cellValue=row.cellIterator();
+						while(cellValue.hasNext())
+						{ 
+							Cell cv = cellValue.next();
+							if(cv.getCellTypeEnum()==CellType.STRING)
+							{
+								 al.add(cv.getStringCellValue());
+							}
+							else if(cv.getCellTypeEnum()==CellType.NUMERIC)
+							{
+								//al.add(cv.getNumericCellValue().toString());
+								al.add(NumberToTextConverter.toText(cv.getNumericCellValue()));
+							}
+						
+							
+						}
+						
+					}
+				}
+			}
+		}
+		return al;
+		
+			
+
+ }
+
 
 }

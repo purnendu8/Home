@@ -1,10 +1,17 @@
 package scripts;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Date;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
+import junit.framework.Assert;
 import pageObjects.MonsterIndiapage;
 import utility.Base;
 
@@ -15,16 +22,34 @@ public class VerifyMonster extends Base {
 	public void testMonsterIndia() throws IOException, InterruptedException
 	{
 		driver=initializeDriver();
+		driver.get("https://www.monsterindia.com/");
+		Thread.sleep(3000);
+		driver.navigate().refresh();
+		Thread.sleep(2000);
+		
 		MonsterIndiapage mi=new MonsterIndiapage(driver);
 		mi.LoginLink();
 		mi.setUserName("purnendukumar8@hotmail.com");
-		Thread.sleep(2000);
+		Thread.sleep(500);
 		mi.setPassword("purnendu8");
-		Thread.sleep(2000);
+		Thread.sleep(500);
 		mi.LoginSubmit();
 		
 		action=new Actions(driver);
-		
+		action.moveToElement(mi.profileHover()).perform();
+		Thread.sleep(1000);
+		mi.MyProfileLink();
+		Thread.sleep(1000);
+		mi.uploadIcon();
+		Thread.sleep(2000);
+		File file=new File(".//data//Purnendu_BE_7yrs_AutomationTesting.doc");
+		String path=file.getAbsolutePath();
+		mi.resumeBrowse(path);
+		Thread.sleep(2000);
+		mi.Save();
+		Thread.sleep(3000);
+		mi.verifyLastUpdate();
+		Thread.sleep(1000);
 	}
 
 }

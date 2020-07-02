@@ -1,0 +1,43 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class SendEmailToHR {
+	@FindBy(css="#i0116")
+	private WebElement username;
+	@FindBy(css="#idSIButton9")
+	private WebElement Next;
+	@FindBy(css="#i0118")
+	private WebElement password;
+	@FindBy(xpath="//input[text()='Sign in']")
+	private WebElement signin;
+	
+	public SendEmailToHR(WebDriver driver)
+	{
+		PageFactory.initElements(driver, this);
+	}
+	
+	public void setUserName(String un)
+	{
+		username.sendKeys(un);
+	}
+	
+	public void Next()
+	{
+		Next.click();
+	}
+	
+	public void setPassword(String pw)
+	{
+		password.sendKeys(pw);
+	}
+	
+	public void SignIN()
+	{
+		signin.click();
+	}
+
+}

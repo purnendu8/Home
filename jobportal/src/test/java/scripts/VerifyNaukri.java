@@ -18,9 +18,13 @@ import utility.Base;
 public class VerifyNaukri extends Base{
 	WebDriver driver;
 	@Test
-	public void testUpdateCV() throws IOException, InterruptedException
+	public void testNaukri() throws IOException, InterruptedException
 	{
 		driver=initializeDriver();
+		driver.get("https://www.naukri.com/");
+		Thread.sleep(3000);
+		driver.navigate().refresh();
+		Thread.sleep(2000);
 		
 		Naukripage nh=new Naukripage(driver);
 		nh.loginLink();
@@ -35,7 +39,7 @@ public class VerifyNaukri extends Base{
 		action.moveToElement(nh.myNaukriLink()).perform();
 		nh.editProfile();
 		Thread.sleep(3000);
-		File file=new File("D:\\Eclipse_WS\\HomeProject - Supporting files\\Purnendu_BE_7yrs_AutomationTesting .doc");
+		File file=new File(".//data//Purnendu_BE_7yrs_AutomationTesting.doc");
 		String path=file.getAbsolutePath();
 		nh.updateResume(path);
 		
